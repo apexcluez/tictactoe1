@@ -1,0 +1,302 @@
+import javax.swing.*; 
+import java.awt.*; 
+import java.awt.event.ActionEvent; 
+import java.awt.event.ActionListener; 
+
+
+		// Declares class TicTacToe and implements the ActionListener class so that you GUI can get input from a mouse click. 
+
+		public class TicTacToe implements ActionListener 
+
+		{ 
+
+		//  Creates a check winner variable and a String variable for each square 
+
+		boolean winner=false; 
+		String buttonName; 
+		Color color1;
+		String player;
+
+		// Create blank JButton objects for each of the 9 squares 
+		JButton button1 = new JButton();
+		JButton button2 = new JButton();
+		JButton button3 = new JButton();
+		JButton button4 = new JButton();
+		JButton button5 = new JButton();
+		JButton button6 = new JButton();
+		JButton button7 = new JButton();
+		JButton button8 = new JButton();
+		JButton button9 = new JButton();
+		 
+
+		// Creates new frame and counter for number of turns		 
+
+		JFrame gameFrame=new JFrame("Tic Tac Toe"); 
+		int count = 0; 
+
+
+		// Creates a TicTacToe object and gives size to the frame 
+
+		 
+
+		public TicTacToe() 
+
+		{ 
+
+		// Creates frame and gives it size and dimensions 
+
+		 
+
+		gameFrame.setMinimumSize(new Dimension(340,300)); 
+
+		gameFrame.setMaximumSize(new Dimension(360,300)); 
+
+		gameFrame.setLayout(new GridLayout(3,3)); 
+
+		gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+
+		 
+
+		// Allows the user to click on a square using the mouse and sends that action to ActionListener class.  
+
+		gameFrame.getContentPane().add(button1); 
+		button1.addActionListener(this); 
+
+		//Write the code for the remaining 8 buttons 
+		gameFrame.getContentPane().add(button2); 
+		button2.addActionListener(this);
+		gameFrame.getContentPane().add(button3); 
+		button3.addActionListener(this);
+		gameFrame.getContentPane().add(button4); 
+		button4.addActionListener(this);
+		gameFrame.getContentPane().add(button5); 
+		button5.addActionListener(this);
+		gameFrame.getContentPane().add(button6); 
+		button6.addActionListener(this);
+		gameFrame.getContentPane().add(button7); 
+		button7.addActionListener(this);
+		gameFrame.getContentPane().add(button8); 
+		button8.addActionListener(this);
+		gameFrame.getContentPane().add(button9); 
+		button9.addActionListener(this);
+		 
+
+		// Set the location of the frame and make sure it can be seen 
+
+		 
+
+		gameFrame.setVisible(true);
+
+		} 
+
+		 
+
+		 
+
+		// actionPerformed method processes the action received from the mouse click 
+
+		 
+
+		public void actionPerformed(ActionEvent e) 
+
+		{ 
+
+
+		//  Write the code to increment your count and assign and X or O to the buttonName 
+
+		 if (count%2 == 0)
+		 {
+			 buttonName = "X";
+			 color1 = Color.BLACK;
+			 player = "Player 1";
+		 }
+		 else
+		 {
+			 buttonName = "O";
+			 color1 = Color.RED;
+			 player = "Player 2";
+		 }
+		 
+		 count++;
+		 
+		//* Checks to see if the Button 1 was clicked and then put in an X or an O in the space depending on the above code and closes that button off from future clicks.   
+
+		 
+
+		if(e.getSource()==button1) 
+		{ 
+		button1.setText(buttonName); 
+		button1.setBackground(color1); 
+		button1.setEnabled(false); 
+		} 
+
+		 
+
+		// Write the code to check for all of the other buttons.	 
+
+		else if(e.getSource()==button2) 
+		{ 
+		button2.setText(buttonName); 
+		button2.setBackground(color1); 
+		button2.setEnabled(false); 
+		} 
+		
+		else if(e.getSource()==button3) 
+		{ 
+		button3.setText(buttonName); 
+		button3.setBackground(color1); 
+		button3.setEnabled(false); 
+		} 
+		
+		else if(e.getSource()==button4) 
+		{ 
+		button4.setText(buttonName); 
+		button4.setBackground(color1); 
+		button4.setEnabled(false); 
+		} 
+		
+		else if(e.getSource()==button5) 
+		{ 
+		button5.setText(buttonName); 
+		button5.setBackground(color1); 
+		button5.setEnabled(false); 
+		} 
+		
+		else if(e.getSource()==button6) 
+		{ 
+		button6.setText(buttonName); 
+		button6.setBackground(color1); 
+		button6.setEnabled(false); 
+		} 
+		
+		else if(e.getSource()==button7) 
+		{ 
+		button7.setText(buttonName); 
+		button7.setBackground(color1); 
+		button7.setEnabled(false); 
+		} 
+		
+		else if(e.getSource()==button8) 
+		{ 
+		button8.setText(buttonName); 
+		button8.setBackground(color1); 
+		button8.setEnabled(false); 
+		} 
+		
+		else if(e.getSource()==button9) 
+		{ 
+		button9.setText(buttonName); 
+		button9.setBackground(color1); 
+		button9.setEnabled(false); 
+		} 
+
+		 
+
+		// You are about to code a very long if else if 
+
+		 
+
+		// Check for Horizontal Row Winners 
+		 
+
+		if (button1.getText()==button2.getText() && button2.getText()==button3.getText() && button1.getText() != "")
+		{
+			JOptionPane.showMessageDialog(gameFrame, player + " is the winner!");
+			playAgain(player);
+		}
+		else if (button4.getText()==button5.getText() && button5.getText()==button6.getText() && button4.getText() != "")
+		{
+			JOptionPane.showMessageDialog(gameFrame, player + " is the winner!");
+			playAgain(player);
+		}
+		else if (button7.getText()==button8.getText() && button8.getText()==button9.getText() && button7.getText() != "") 
+		{
+			JOptionPane.showMessageDialog(gameFrame, player + " is the winner!");
+			playAgain(player);
+		}
+		 
+
+		// Now Check for Vertical Winners (Still in the same if else if) 
+		else if (button1.getText()==button4.getText() && button4.getText()==button7.getText() && button1.getText() != "")
+		{
+			JOptionPane.showMessageDialog(gameFrame, player + " is the winner!");
+			playAgain(player);
+		}
+		else if (button2.getText()==button5.getText() && button5.getText()==button8.getText() && button2.getText() != "")
+		{
+			JOptionPane.showMessageDialog(gameFrame, player + " is the winner!");
+			playAgain(player);
+		}
+		else if (button3.getText()==button6.getText() && button6.getText()==button9.getText() && button3.getText() != "") 
+		{
+			JOptionPane.showMessageDialog(gameFrame, player + " is the winner!");
+			playAgain(player);
+		}		 
+
+		 
+
+		// Diagonal Winners 
+
+		else if (button1.getText()==button5.getText() && button5.getText()==button9.getText() && button1.getText() != "")
+		{
+			JOptionPane.showMessageDialog(gameFrame, player + " is the winner!");
+			playAgain(player);
+		}
+		else if (button3.getText()==button5.getText() && button5.getText()==button7.getText() && button3.getText() != "")
+		{
+			JOptionPane.showMessageDialog(gameFrame, player + " is the winner!");
+			playAgain(player);
+		}
+
+		// Tie ( There have been nine moves and no winner, still in an if else if) 
+
+		else if (count == 9 && winner == false )
+		{
+			player = "Nobody";
+			JOptionPane.showMessageDialog(gameFrame, "The Match was a Tie!");
+			playAgain(player);
+		}
+		
+
+		// Outputs pop-up box to ask player if they want to play again if there is a tie 
+
+		 
+
+		}  // End of ActionPerformed method 
+
+		 
+
+		// Provides the Play Again box at the end of the game. 
+
+		 
+
+		private void playAgain(String bName) 
+
+		{ 
+
+		Object[] options = {"Play Again",   "No, thanks" }; 
+		int n = JOptionPane.showOptionDialog(null, player + " Won The match " , "Status", 
+		    JOptionPane.YES_NO_OPTION, 
+		    JOptionPane.QUESTION_MESSAGE, 
+		    null, 
+		    options, 
+		    options[1]); 
+		if(n ==0) 
+		{
+		gameFrame.dispose(); 
+		main(null); 
+		} 
+		else 
+		gameFrame.dispose(); 
+
+		} 
+
+		// Main method that runs the program 
+
+		public static void main(String[] args) { 
+
+		new TicTacToe(); 
+
+		} 
+		} // Ends Class TicTac Toe 
+		
